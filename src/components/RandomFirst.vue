@@ -4,12 +4,11 @@
     <div class="row-half"><img src="../assets/DSC01997.jpg" alt=""></div>
     <div class="row-half p20">
       <h2>тоня: А ты о чем думаешь</h2>
-    </div>  
+    </div>
   </div>
 </div>
 
-<!-- анимация набора текста, 
-ховеры -->
+<!-- анимация набора текста, ховеры -->
 </template>
 
 <style lang="css" scoped>
@@ -17,7 +16,7 @@ img {
   max-width: 100%;
 }
 img:hover {
-  
+
 }
 .p20 {
   padding: 20px;
@@ -25,7 +24,7 @@ img:hover {
 .container {
   display: flex;
   background: black;
-  
+
   color: white;
 }
 .row-half {
