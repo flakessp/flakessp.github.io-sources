@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>мой сайт</h1>
+    <router-link to="/1" >1</router-link>
   </div>
 </template>
 
