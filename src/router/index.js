@@ -4,6 +4,7 @@ import AppHome from '@/components/AppHome'
 import RandomFirst from '@/components/RandomFirst'
 import RandomSecond from '@/components/RandomSecond'
 import RandomThird from '@/components/RandomThird'
+import RandomForth from '@/components/RandomForth'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
     {
       path: '/3',
       component: RandomThird
+    },
+    {
+      path: '/4',
+      component: RandomForth
     }
   ]
 })
