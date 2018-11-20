@@ -5,11 +5,11 @@ import RandomFirst from '@/components/RandomFirst'
 import RandomSecond from '@/components/RandomSecond'
 import RandomThird from '@/components/RandomThird'
 import RandomForth from '@/components/RandomForth'
+import HowToWebsites from '@/components/AppHowToCode'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
@@ -30,6 +30,10 @@ export default new Router({
     {
       path: '/4',
       component: RandomForth
+    },
+    {
+      path: '/howtomakewebsites',
+      component: HowToWebsites
     }
   ]
 })

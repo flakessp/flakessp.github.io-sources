@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
-    <h1>привет</h1>
+    <router-link to="/">home</router-link>
+    <router-link to="/1">DLT THIS</router-link>
+    <router-link to="/2">КОШКА</router-link>
+    <router-link to="/3">VRTV</router-link>
+    <router-link to="/4">🥗SÅḺÀⅅ̲𝓓ȧȳŚ👀</router-link>
+    <router-link to="/howtomakewebsites">🌍а все таки, как же делать сайты?🤔</router-link>
   </div>
 </template>
 
@@ -28,7 +33,12 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
-  color: #42b983;
+  font-size: 50px;
+  text-decoration: none;
+  padding: 30px;
+  color: black;
 }
+
 </style>

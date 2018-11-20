@@ -1,32 +1,88 @@
 <template>
-  <div class="container">
-    <section>
-    </section>
-    <section>
-    </section>
-    <section>
-    </section>
-    <section>
-    </section>        
+  <div class="container" @click="clickMe">
+    <salad-over v-for="item in 4" :key="item"></salad-over>
     <figure>
       <div class="open--center"></div>
     </figure>
   </div>
 </template>
 
+<script>
+import saladOver from './randomForthSection.vue'
+import gyro from './randomForthGyro.vue'
+
+  export default {
+    components: {
+      saladOver,
+      gyro
+    },
+    data() {
+      return {
+        clicked: false,
+        backgroundSize: 'contain',
+        scale: 1,
+        speed: Math.random() * 20
+      }
+    },methods: {
+    }, computed: {
+      computedStyle() {
+        return {
+          backgroundSize: {
+            backgroundSize: this.backgroundSize,
+            transform: `scale(${this.scale})`
+          },
+          scale: {
+            transform: `scale(${this.scale})`
+          }
+        }
+      }
+    }, mounted () {
+      // Position Variables
+// var x = 0;
+// var y = 0;
+
+// // Speed - Velocity
+// var vx = 0;
+// var vy = 0;
+
+// // Acceleration
+// var ax = 0;
+// var ay = 0;
+
+// var delay = 10;
+// var vMultiplier = 0.01;
+
+// window.ondevicemotion = function(event) {
+// 		ax = event.accelerationIncludingGravity.x;
+// 		ay = event.accelerationIncludingGravity.y;
+// 		console.log("Accelerometer data - x: " + event.accelerationIncludingGravity.x + " y: " + event.accelerationIncludingGravity.y + " z: " +event.accelerationIncludingGravity.z); 
+// 	}
+
+// 	setInterval(function() {
+// 		vy = vy + -(ay);
+// 		vx = vx + ax;
+
+// 		var ball = document.querySelector("figure");
+// 		y = parseInt(y + vy * vMultiplier);
+// 		x = parseInt(x + vx * vMultiplier);
+		
+// 		if (x<0) { x = 0; vx = 0; }
+// 		if (y<0) { y = 0; vy = 0; }
+// 		if (x>document.documentElement.clientWidth-200) { x = document.documentElement.clientWidth-200; vx = 0; }
+// 		if (y>document.documentElement.clientHeight-100) { y = document.documentElement.clientHeight-100; vy = 0; }
+		
+// 		ball.style.top = y + "px";
+// 		ball.style.left = x + "px";
+// 	}, delay);
+
+    }
+  }
+</script>
+
 <style scoped>
 .container {
   display: flex;
   position: relative;
-}
-section {
-  flex-basis: 25%;
-  height: 100%;
-  margin: 0;
-  flex-direction: column;
-  height: 100vh;
-  background:url(../assets/3/os_movie_cover.svg) repeat-y 0 / auto 100%;
-	animation: salad 10s linear infinite ;
 }
 figure, .open--center {
   position: absolute;
@@ -41,27 +97,14 @@ figure, .open--center {
   animation: rotate 10s linear infinite;
   transform-origin: center;
 }
+figure {
+  background-size: contain;
+}
 .open--center {
   width: 50%;
   height: 50%;
   animation: rotate 5s infinite reverse;
   background-image: url(../assets/3/opening-02-01.svg);
-}
-section:nth-child(1) {
-  animation-duration: 10s   
-}
-section:nth-child(2) {
-    animation-duration: 15s
-}
-section:nth-child(3) {
-    animation-duration: 20s
-}
-section:nth-child(4) {
-    animation-duration: 8s
-}
-@keyframes salad {	
-  from{background-position: 0 0;}
-	to{background-position: 0 100vh;}
 }
 @keyframes rotate {
   from{
