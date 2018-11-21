@@ -6,6 +6,8 @@ import RandomSecond from '@/components/RandomSecond'
 import RandomThird from '@/components/RandomThird'
 import RandomForth from '@/components/RandomForth'
 import HowToWebsites from '@/components/AppHowToCode'
+import RandomSix from '@/components/RandomSix'
+import Random7 from '@/components/Random7'
 
 Vue.use(Router)
 
@@ -34,6 +36,14 @@ export default new Router({
     {
       path: '/howtomakewebsites',
       component: HowToWebsites
+    },
+    {
+      path: '/6',
+      component: RandomSix
+    },
+    {
+      path: '/7',
+      component: Random7
     }
   ]
 })

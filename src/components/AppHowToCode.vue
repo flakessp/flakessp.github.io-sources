@@ -79,60 +79,14 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
 
     }
   }, mounted() {
-    debugger;
-function Particle() {
-  this.x = random(windowWidth);
-  this.y = random(windowHeight);
-  this.oldX = this.x;
-  this.oldY = this.y;
-}
-
-Particle.prototype.move = function() {
-  this.oldX = this.x;
-  this.oldY = this.y;
-  this.x += random(-particleStepMax, particleStepMax);
-  this.y += random(-particleStepMax, particleStepMax);
-  if(this.x < 0) this.x = 0;
-  if(this.x > windowWidth) this.x = windowWidth;
-  if(this.y < 0) this.y = 0;
-  if(this.y > windowHeight) this.y = windowHeight;
-}
-
-Particle.prototype.draw = function() {
-  line(this.oldX, this.oldY, this.x, this.y);
-}
-
-var particleStepMax;
-var p;
-
-function setup() {
-  cursor(HAND);
-  particleStepMax = 100;
-  p = new Particle();
-  createCanvas(windowWidth, windowHeight);
-  stroke(0);
-  background(255);
-}
-
-function draw() {
-  p.move();
-  p.draw();
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-
-function mouseClicked() {
-  particleStepMax = random(40);
-  background(255);
-}
+  }, components: {
   }
 }
   
@@ -168,16 +122,9 @@ function mouseClicked() {
   }
 
   .homework h1 {
-    /* -webkit-text-fill-color: #FF0000;
-    -webkit-text-stroke: 1px black; */
-    
-    
-    
-    /* box-shadow: 3px 3px 0px 6px black; */
-    
   }
+
   .box {
-    /* border: 1px solid black; */
     display: inline-block;
     box-shadow: 3px 3px 0px 6px black;
     padding: 20px;

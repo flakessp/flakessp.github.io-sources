@@ -1,20 +1,26 @@
 <template>
   <div class="container" @click="clickMe">
-    <salad-over v-for="item in 4" :key="item"></salad-over>
-    <figure>
+    <div v-if="clicked">
+      <salad-over v-for="item in 4" :key="item"></salad-over>
+      <figure>
       <div class="open--center"></div>
-    </figure>
+      </figure>
+    </div>
+    <canvas-image v-else></canvas-image>
   </div>
+  
 </template>
 
 <script>
 import saladOver from './randomForthSection.vue'
 import gyro from './randomForthGyro.vue'
+import canvasImage from './AppSaladDays_2.vue'
 
   export default {
     components: {
       saladOver,
-      gyro
+      gyro,
+      canvasImage
     },
     data() {
       return {
@@ -24,6 +30,9 @@ import gyro from './randomForthGyro.vue'
         speed: Math.random() * 20
       }
     },methods: {
+      clicMe() {
+        this.clicked = !this.clicked;
+      }
     }, computed: {
       computedStyle() {
         return {
@@ -33,7 +42,7 @@ import gyro from './randomForthGyro.vue'
           },
           scale: {
             transform: `scale(${this.scale})`
-          }
+          },
         }
       }
     }, mounted () {

@@ -1,0 +1,81 @@
+<template>
+<div>
+  {{x}}
+  <canvas id="canvas"></canvas>
+</div>
+  
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        x: Math.floor(Math.random()*2000)
+        }
+    },
+    methods: {
+      displaceImage() {
+
+      }
+    },
+    mounted() {
+      var canvas = document.getElementById('canvas');
+
+var ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var width = canvas.width;
+var height = canvas.height;
+console.log(width, height);
+
+
+var imageObj = new Image();
+
+imageObj.onload = drawStuff;
+
+function drawStuff() {
+  ctx.drawImage(imageObj, 0, 0, width, height);
+	
+	for(var i = 0; i < 50; i++) {
+		createDisplacement();
+	}
+}
+
+function createDisplacement() {
+	var xVal = Math.round(Math.random() * 8 - 4);
+	var yVal = Math.round(Math.random() * canvas.height);
+	var height = Math.round(Math.random() * 4 + 10);
+	
+	var data = ctx.getImageData(0, yVal, canvas.width, height);
+	ctx.clearRect(0, yVal, canvas.width, height);
+	ctx.putImageData(data, xVal, yVal);
+};
+document.addEventListener('mousemove', drawStuff);
+
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            /**
+             * Your drawings need to be inside this function otherwise they will be reset when 
+             * you resize the browser window and the canvas goes will be cleared.
+             */
+            drawStuff(); 
+    }
+
+
+
+imageObj.src = 'data:image/svg+xml;base64,' + 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgODg3LjUgMjEyNC41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA4ODcuNSAyMTI0LjU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojRkZGRkZGO30uc3Qxe2ZpbGw6IzY2RkY4Mzt9PC9zdHlsZT48cmVjdCBjbGFzcz0ic3QwIiB3aWR0aD0iODg3LjUiIGhlaWdodD0iMTA2Mi41Ii8+PHJlY3QgeD0iMCIgeT0iMTA2Mi41IiB3aWR0aD0iODg3LjUiIGhlaWdodD0iMTA2Mi41Ii8+PGc+PHBhdGggZD0iTTI0Ny4yLDkwOC40YzAsNTAtMjcuNSw3OS42LTkwLjUsNzkuNkgxNDdjLTYzLDAtOTIuMS0yOS41LTkyLjEtNzkuNnYtNzUxYzAtNTAsMjkuMS03OS42LDkyLjEtNzkuNmg5LjdjNjMsMCw5MC41LDI5LjUsOTAuNSw3OS42VjkwOC40eiBNMTU5LjksMTUxYzAtNy43LTMuMi0xMS42LTguMS0xMS42Yy02LjUsMC05LjcsMy44LTkuNywxMS42djc2Mi42YzAsNy43LDMuMiwxMS41LDkuNywxMS41YzQuOSwwLDguMS0zLjksOC4xLTExLjVWMTUxeiIvPjxwYXRoIGQ9Ik0yNTguNiw4MC40aDkyLjFsMTYuMiw4MTAuOEwzODMsODAuNGg4NC4xbC00NS4zLDkwNUgzMDUuNEwyNTguNiw4MC40eiIvPjxwYXRoIGQ9Ik02MTksODAuNHY2NC4yaC01My4zdjM0MC41aDUwLjF2NjYuN2gtNTAuMVY5MjBoNTV2NjUuNEg0ODB2LTkwNUg2MTl6Ii8+PHBhdGggZD0iTTcyMi40LDk4NS40aC04NS43di05MDVoMTM0LjJjMzMuOSwwLDUzLjMsMTkuMyw1My4zLDUwdjM0NC4zYzAsMjkuNS0xNy44LDM4LjUtMzAuNyw0Mi4zYzEyLjksMy45LDMyLjMsMTYuNywzMi4zLDQxLjF2NDA5LjNjMCw2LjQsMS42LDExLjUsMy4yLDE2Ljd2MS4zaC04NC4xYy0zLjItMi42LTQuOC03LjctNC44LTE2LjdWNTY3LjJjMC02LjQtMy4yLTktMTEuMy05aC02LjVWOTg1LjR6IE03MjIuNCw0OTIuOGg2LjVjOC4xLDAsMTEuMy0zLjgsMTEuMy0xMC4zVjE0OS43YzAtNi40LTMuMi0xMC4zLTkuNy0xMC4zaC04LjFWNDkyLjh6Ii8+PC9nPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMjEuNiwyMDUxLjhjLTQ2LjUsMC03MC40LTIyLTcwLjQtNjQuNnYtMzUwaDcwLjR2MzQ2LjRjMCw3LjMsMi43LDExLDYuNiwxMWM1LjMsMCw4LTMuNyw4LTExdi0zMjAuOGMwLTE5LjUtMi43LTI0LjQtMTItMzcuOEw3OS4xLDE1NzBjLTIxLjMtMjguMS0yNi42LTUwLTI2LjYtODcuOHYtMjc0LjRjMC00My45LDE3LjMtNjguMyw3MC40LTY4LjNoMTQuNmM1My4xLDAsNjcuNywyNC40LDY3LjcsNjMuNHYzMDcuNGgtNjcuN3YtMzA2LjFjMC02LjEtMi43LTguNS02LjYtOC41Yy01LjMsMC04LDIuNC04LDguNXYyODNjMCwxOS41LDIuNywyMy4yLDEyLDM2LjZsNDUuMiw1Ni4xYzI1LjIsMjkuMywyNi42LDQ4LjgsMjYuNiw4Ny44djMxNC43YzAsNDYuMy0yMy45LDY5LjUtNzAuNCw2OS41SDEyMS42eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0zMDIuMywxODM0LjdIMjgxbC01LjMsMjE0LjdoLTU5LjhsMzMuMi05MDcuNGg5M2wzMy4yLDkwNy40aC02OS4xTDMwMi4zLDE4MzQuN3ogTTI5MywxMzA3LjhsLTEwLjYsNDY1LjlIMzAxTDI5MywxMzA3Ljh6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTQ1NSwxMTQxLjl2ODQ1LjJoNDIuNXY2Mi4ySDM4NC42di05MDcuNEg0NTV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTU5MC41LDE4MzQuN2gtMjEuM2wtNS4zLDIxNC43aC01OS44bDMzLjItOTA3LjRoOTNsMzMuMiw5MDcuNGgtNjkuMUw1OTAuNSwxODM0Ljd6IE01ODEuMiwxMzA3LjhsLTEwLjYsNDY1LjloMTguNkw1ODEuMiwxMzA3Ljh6Ii8+PC9nPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NzIuOCwxMTQxLjloOTkuNmMzMy4yLDAsNTUuOCwxNy4xLDU1LjgsNTYuMXY3OTIuOGMwLDM1LjQtMTcuMyw1OC41LTUzLjEsNTguNUg2NzIuOFYxMTQxLjl6IE03NDMuMiwxOTkyaDUuM2M2LjYsMCw5LjMtNC45LDkuMy0xMy40di03NjguNGMwLTguNS0yLjctMTIuMi05LjMtMTIuMmgtNS4zVjE5OTJ6Ii8+PGc+PHJlY3QgeD0iMTUyOC42IiB5PSItMTQzMC4xIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjk3MzggLTAuMjI3MiAwLjIyNzIgMC45NzM4IDMxNS4xNDE4IDQ1Mi41MDMzKSIgY2xhc3M9InN0MSIgd2lkdGg9IjExODguNiIgaGVpZ2h0PSI1NzUuMiIvPjxnPjxnPjxwYXRoIGQ9Ik0xNjkxLjktMTI4Ny43YzczLjctMTcuMiwxMDguOSwxMi41LDEyMi4yLDY5LjJsMTIuNyw1NC4ybC05Ni45LDIyLjZsLTExLjQtNDguOGMtMi45LTEyLjItNy42LTE4LjgtMTkuOC0xNS45Yy0xMS42LDIuNy0xMy41LDEwLjktMTAuNSwyMy43bDIuNywxMS42YzQuNCwxOC45LDExLjIsMjguOSwzMi44LDQxLjJsNjIuNiwzNC4yYzU1LjUsMzEuNCw3Ni43LDU4LjYsODguMiwxMDhsNS4zLDIyLjZjMTYuNSw3MC43LTcuMSwxMjYuMy04NC41LDE0NC40bC0yMS45LDUuMWMtNzAuMSwxNi40LTExMy4zLTguOS0xMjguOC03NS4zbC0xNi45LTcyLjVsOTguNy0yM2wxNC43LDYyLjhjMy41LDE1LjIsOS44LDIyLjgsMjIuNiwxOS44YzEyLjItMi44LDE0LjMtMTMsMTAuMi0zMC42bC0yLjgtMTIuMmMtNi0yNS42LTEwLjUtMzYuOC0zNy4xLTUxLjdsLTYzLjQtMzQuN2MtNDYuNC0yNS4yLTY4LjMtNTguNi03OS4xLTEwNC45bC01LTIxLjNjLTE0LjEtNjAuMywxMi41LTEwNi40LDgzLjItMTIyLjlMMTY5MS45LTEyODcuN3oiLz48cGF0aCBkPSJNMTk4Mi0xMjMxLjRjLTQtMTcuMS0xMi4xLTI0LjItMjQuMy0yMS4zYy0xNCwzLjMtMTYuMywxMi44LTEyLjMsMjkuOWw1NC4yLDIzMi4yYzMuMywxNCwxMC4xLDIxLjQsMjQuMSwxOC4xYzEyLjgtMywxNS43LTEyLjcsMTIuNC0yNi43TDE5ODItMTIzMS40eiBNMjEzOC44LTEwMzAuMmMxOC4zLDc4LjYtMTQuNiwxMzMuMi04My40LDE0OS4zbC0xOS41LDQuNWMtNzMuNywxNy4yLTEyMy43LTE4LTE0Mi4xLTk2LjdsLTUwLjItMjE1LjFjLTE4LjItNzgsMy4xLTEzNS43LDgyLjktMTU0LjNsMTkuNS00LjZjODAuNS0xOC44LDEyNC42LDI0LjMsMTQyLjYsMTAxLjdMMjEzOC44LTEwMzAuMnoiLz48cGF0aCBkPSJNMjI0NS45LTEyOTNjLTQtMTcuMS0xMi4xLTI0LjItMjQuMy0yMS4zYy0xNCwzLjMtMTYuMywxMi44LTEyLjMsMjkuOWw1NC4yLDIzMi4yYzMuMywxNCwxMC4xLDIxLjQsMjQuMiwxOC4xYzEyLjgtMywxNS43LTEyLjcsMTIuNC0yNi43TDIyNDUuOS0xMjkzeiBNMjQwMi44LTEwOTEuOGMxOC4zLDc4LjYtMTQuNiwxMzMuMi04My40LDE0OS4zbC0xOS41LDQuNWMtNzMuOCwxNy4yLTEyMy44LTE4LTE0Mi4xLTk2LjZsLTUwLjItMjE1LjJjLTE4LjItNzgsMy0xMzUuNyw4Mi45LTE1NC4zbDE5LjUtNC41YzgwLjQtMTguOCwxMjQuNSwyNC4zLDE0Mi42LDEwMS43TDI0MDIuOC0xMDkxLjh6Ii8+PC9nPjxwb2x5Z29uIHBvaW50cz0iMjQ0MS44LC0xNDU2LjMgMjU0NC43LC0xMjQ4LjkgMjQ5My41LC0xNDY4LjQgMjU3OS41LC0xNDg4LjQgMjY4NS4zLC0xMDM1IDI1OTYuOSwtMTAxNC40IDI0ODIsLTEyMzYuOSAyNTM3LjIsLTEwMDAuNCAyNDUwLC05ODAuMSAyMzQ0LjIsLTE0MzMuNSAiLz48L2c+PC9nPjwvc3ZnPg==';
+    }
+  }
+</script>
+
+<style scoped>
+#canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+</style>
