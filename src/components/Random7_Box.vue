@@ -5,10 +5,21 @@
 </template>
 
 <script>
+const borderStyle = '1px solid white'
   export default {
     data() {
       return {
-        isHovered: false
+        isHovered: false,
+        borderStylesArray: [{
+            borderLeft: borderStyle
+          },{
+            borderRight: borderStyle
+          }, {
+            borderTop: borderStyle
+          }, {
+            borderBottom: borderStyle
+          }
+        ]
       }
     },
     methods: {
@@ -21,18 +32,38 @@
     ],
     computed: {
       computedStyle() {
-        let background = 'none',
-          color = 'blue';
+        let BASE_COLOR = '#092acd',
+            SECONDARY_COLOR = '#f2d22e',
+            SWITCH_COLOR = false,
+            FONT_SIZE_RANGE = 50
+
+        if (SWITCH_COLOR) {
+          let temp = SECONDARY_COLOR;
+          SECONDARY_COLOR = BASE_COLOR;
+          BASE_COLOR = temp;
+        }
+
+        let background = BASE_COLOR,
+            color = 'white',
+            fontSize = Math.random()*FONT_SIZE_RANGE + 'px',
+            letterSpacing = Math.random() * 15 * (-1*(Math.round(Math.random()*2))) + 'px'
+
+        let randomBorderStyle = this.borderStylesArray[Math.floor(Math.random()*4)];
+
+
         if (this.isHovered) {
-          background = 'blue';
-          color = 'blue';
+          background = SECONDARY_COLOR;
+          color = SECONDARY_COLOR;
         } else {
-          background = 'none';
-          color = 'black';
+          background = BASE_COLOR;
+          color = 'white';
         }
         return {
           background,
-          color
+          color,
+          fontSize,
+          letterSpacing,
+          ...randomBorderStyle
         }
       }
     }

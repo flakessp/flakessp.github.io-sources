@@ -6,6 +6,7 @@
     <router-link class="v-font" to="/3">Variative Fonts</router-link>
     <router-link to="/4">🥗SÅḺÀⅅ̲𝓓ȧȳŚ👀</router-link>
     <router-link to="/howtomakewebsites">🌍а все таки, как же делать сайты?🤔</router-link>
+    <router-link to="7" class="big">🔵</router-link>
   </div>
 </template>
 
@@ -51,6 +52,12 @@ a {
 .container {
   display: flex;
   flex-flow: wrap;
+}
+
+.big {
+  font-size: 100px;
+  box-shadow: none;
+  background: pink;
 }
 
 </style>
