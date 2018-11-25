@@ -16,7 +16,7 @@
     },
     methods: {
       destroyItem() {
-        this.$emit('destroy', this.id);
+        this.$emit('destroy');
       }
     }, 
     props: ['id'],

@@ -9,6 +9,7 @@ import HowToWebsites from '@/components/AppHowToCode'
 import RandomSix from '@/components/RandomSix'
 import Random7 from '@/components/Random7'
 import Draggable from '@/components/RandomDraggable'
+import Drawings from '@/components/AppCanvasHandDrawings'
 
 Vue.use(Router)
 
@@ -49,6 +50,10 @@ export default new Router({
     {
       path: '/draggable',
       component: Draggable
+    },
+    {
+      path: '/drawings', 
+      component: Drawings
     }
   ]
 })

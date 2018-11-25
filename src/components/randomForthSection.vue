@@ -36,7 +36,7 @@ section {
   background-image: url(../assets/3/os_movie_cover.svg);
   background-position: 0 20vh;
   /* background-size: 100% 200%; */
-  background-size: contain;
+  background-size: cover;
   /* background-repeat: repeat-y; */
 	animation: salad 10s linear infinite ;
   transition: transform 3s;

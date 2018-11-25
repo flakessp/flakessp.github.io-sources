@@ -1,12 +1,12 @@
 <template>
   <div class="container" @click="clickMe">
-    <div v-if="clicked">
+    
       <salad-over v-for="item in 4" :key="item"></salad-over>
       <figure>
       <div class="open--center"></div>
       </figure>
-    </div>
-    <canvas-image v-else></canvas-image>
+    
+    <!-- <canvas-image v-else></canvas-image> -->
   </div>
   
 </template>
@@ -30,7 +30,7 @@ import canvasImage from './AppSaladDays_2.vue'
         speed: Math.random() * 20
       }
     },methods: {
-      clicMe() {
+      clickMe() {
         this.clicked = !this.clicked;
       }
     }, computed: {
@@ -45,45 +45,6 @@ import canvasImage from './AppSaladDays_2.vue'
           },
         }
       }
-    }, mounted () {
-      // Position Variables
-// var x = 0;
-// var y = 0;
-
-// // Speed - Velocity
-// var vx = 0;
-// var vy = 0;
-
-// // Acceleration
-// var ax = 0;
-// var ay = 0;
-
-// var delay = 10;
-// var vMultiplier = 0.01;
-
-// window.ondevicemotion = function(event) {
-// 		ax = event.accelerationIncludingGravity.x;
-// 		ay = event.accelerationIncludingGravity.y;
-// 		console.log("Accelerometer data - x: " + event.accelerationIncludingGravity.x + " y: " + event.accelerationIncludingGravity.y + " z: " +event.accelerationIncludingGravity.z); 
-// 	}
-
-// 	setInterval(function() {
-// 		vy = vy + -(ay);
-// 		vx = vx + ax;
-
-// 		var ball = document.querySelector("figure");
-// 		y = parseInt(y + vy * vMultiplier);
-// 		x = parseInt(x + vx * vMultiplier);
-		
-// 		if (x<0) { x = 0; vx = 0; }
-// 		if (y<0) { y = 0; vy = 0; }
-// 		if (x>document.documentElement.clientWidth-200) { x = document.documentElement.clientWidth-200; vx = 0; }
-// 		if (y>document.documentElement.clientHeight-100) { y = document.documentElement.clientHeight-100; vy = 0; }
-		
-// 		ball.style.top = y + "px";
-// 		ball.style.left = x + "px";
-// 	}, delay);
-
     }
   }
 </script>
