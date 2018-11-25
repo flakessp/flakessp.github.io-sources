@@ -11,6 +11,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@branu-jp/v-drag": "^0.1.0",
+    "draggable-vue-directive": "^2.0.3",
+    "lodash": "^4.17.11",
     "splitting": "^1.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"

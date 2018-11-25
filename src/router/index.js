@@ -8,6 +8,7 @@ import RandomForth from '@/components/RandomForth'
 import HowToWebsites from '@/components/AppHowToCode'
 import RandomSix from '@/components/RandomSix'
 import Random7 from '@/components/Random7'
+import Draggable from '@/components/RandomDraggable'
 
 Vue.use(Router)
 
@@ -44,6 +45,10 @@ export default new Router({
     {
       path: '/7',
       component: Random7
+    },
+    {
+      path: '/draggable',
+      component: Draggable
     }
   ]
 })
