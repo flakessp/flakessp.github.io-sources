@@ -22,7 +22,7 @@ import image from '../assets/me/me.jpg'
         }
 
         sketch.draw = function() {
-          // BEST RESULTS: OVERLAY DIFFRENECE HARD_LIGHT SOFT_LIGHT
+          // BEST RESULTS: OVERLAY | DIFFRENECE | HARD_LIGHT | SOFT_LIGHT
           sketch.blendMode(blendModes[Math.floor(Math.random()*blendModes.length)]);
 
           if (prevX !== sketch.mouseX && prevY !== sketch.mouseY ) {
