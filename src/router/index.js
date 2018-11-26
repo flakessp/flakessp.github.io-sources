@@ -11,6 +11,7 @@ import Random7 from '@/components/Random7'
 import Draggable from '@/components/RandomDraggable'
 import Drawings from '@/components/AppCanvasHandDrawings'
 import CanvasPhoto from '@/components/AppCanvasImage'
+import Week4 from '@/components/TeachingWeek4'
 
 Vue.use(Router)
 
@@ -59,6 +60,10 @@ export default new Router({
     {
       path: '/canvas',
       component: CanvasPhoto
+    },
+    {
+      path: '/week4',
+      component: Week4
     }
   ]
 })
